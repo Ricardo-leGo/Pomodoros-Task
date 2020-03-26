@@ -5,6 +5,8 @@ export default function Index() {
     let seconds             = 60
     let auxiliartime        = 0
 
+
+    let [timeFromUser, settimeFromUser] = useState()
     let [count, setCount] = useState(TimeInit);
     let [countInTimeout, setCountInTimeout] = useState(TimeInit);
     let [Timer, setTimer] = useState();
@@ -41,7 +43,6 @@ export default function Index() {
             }, 1000)
             setTimer(Timer)            
             }
-
         }         
         const PauseInterval = (e)=>{
             let PauseValues = document.getElementById('pause').innerText.split(':').map(el=> parseInt(el))
