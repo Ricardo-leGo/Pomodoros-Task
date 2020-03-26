@@ -10,6 +10,19 @@ class ProviderClass extends Component {
     pruebas:'holaaaaa',
     isUserExist:false,
     isUserLogged:false,
+    user:null,
+    timer:{
+      duration:'',      
+    },
+    task:{
+      name:'',
+      type:'',
+      done:false,
+      pending:true,
+      initialized:false,
+      description:"",
+      parts:[]
+      },
     
     Userform:{
       name:'',
@@ -18,6 +31,11 @@ class ProviderClass extends Component {
       confirmPassword:''
     }
   }  
+
+  componentDidMount =  () => { 
+    console.log("Traer data para ll")
+    
+  }
       Login=(e)=>{
         let { Userform } = this.state
          const {name, value} = e.target

@@ -1,8 +1,9 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import  { ctxContext } from '../../context'
 import { NavLink, withRouter } from 'react-router-dom'
 
 function Navbar() {
+    const options = useContext(ctxContext)
     return (
             <ctxContext.Consumer>
                 {context =>(
@@ -10,7 +11,7 @@ function Navbar() {
                     <NavLink exact to='/'>Home</NavLink>|
                     <NavLink exact to='/signup'>signup</NavLink>|
                     <NavLink exact to='/login'>login</NavLink>|
-                    <NavLink exact to='/loggedUser'>loggedUser</NavLink>|
+                    <NavLink exact to='/profile'>Profile</NavLink>|
                     <NavLink exact to='/taskdetails'>taskdetails</NavLink>|
                     </>
                     

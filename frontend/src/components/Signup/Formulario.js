@@ -1,14 +1,12 @@
 import React from 'react'
-
+import AUTH_SERVICES from '../../services'
 
  function UserForm({asfunction, page, userfunction}) {
-     console.log({asfunction, page, userfunction});
-     
-
         const submitTocontext = (e)=>{
                 userfunction(e)
-                // .then(res=>res).catch(err=>err)
+                .then(res=>res).catch(err=>err)
         }
+        
     return (
         <>
         <form onSubmit={submitTocontext} >
@@ -20,23 +18,23 @@ import React from 'react'
         id="name"
         onChange={asfunction}
         />
+
         <input 
         name="email"
         type ="email"
         placeholder="Email"
         id="email"
-
         onChange={asfunction}
-
         />
+
         <input 
         name="password"
         type ="password"
         placeholder="Password"
         id="password"
         onChange={asfunction}
-
         />
+
         { page !== "login" && (
         <input 
         name="confirmPassword"
