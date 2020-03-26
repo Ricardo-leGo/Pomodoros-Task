@@ -1,6 +1,4 @@
 import React, {useState} from 'react'
-
-
 export default function Index() {
     let TimeInit            = '00'
     let minutes             = 0
@@ -10,8 +8,6 @@ export default function Index() {
     let [count, setCount] = useState(TimeInit);
     let [countInTimeout, setCountInTimeout] = useState(TimeInit);
     let [Timer, setTimer] = useState();
-
-
 
     const  AsignTime= (e) =>{
         TimeInit = e.target.value
@@ -46,43 +42,28 @@ export default function Index() {
             setTimer(Timer)            
             }
 
-        }
-
-         
+        }         
         const PauseInterval = (e)=>{
             let PauseValues = document.getElementById('pause').innerText.split(':').map(el=> parseInt(el))
-            
-            
-            
             console.log(PauseValues);
-            
-            
             setCountInTimeout(countInTimeout=parseInt(PauseValues[1]))
             setCount(count=parseInt(PauseValues[2]))
             clearInterval(Timer)
             setTimer(Timer=false)
          } 
-
-    
         const StopInterval = ()=>{
                 clearInterval(Timer)
                 setTimer(Timer =false)
                 setCount(count='00')
                 setCountInTimeout(countInTimeout='00')
-                console.log(Timer);
-                
+                console.log(Timer);     
         }
-
         const ResetInterval = () => {
         }
-        
-
     return (
         <div className="pomodoroTimer">          
             <h1> Pomodoro Timer</h1>
             <h3 id="pause"> Minutos: {countInTimeout}:{count}</h3>
-            
-
             <select  onChange={AsignTime}>
                     <option>10</option>
                     <option>15</option>
