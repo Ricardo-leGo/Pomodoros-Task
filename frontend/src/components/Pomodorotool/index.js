@@ -46,7 +46,6 @@ export default function Index() {
         }         
         const PauseInterval = (e)=>{
             let PauseValues = document.getElementById('pause').innerText.split(':').map(el=> parseInt(el))
-            console.log(PauseValues);
             setCountInTimeout(countInTimeout=parseInt(PauseValues[1]))
             setCount(count=parseInt(PauseValues[2]))
             clearInterval(Timer)
@@ -57,7 +56,6 @@ export default function Index() {
                 setTimer(Timer =false)
                 setCount(count='00')
                 setCountInTimeout(countInTimeout='00')
-                console.log(Timer);     
         }
         const ResetInterval = () => {
         }

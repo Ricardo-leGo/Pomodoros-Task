@@ -4,7 +4,6 @@ import { ctxContext } from '../../context'
 export default function Search(props) {
     const context = useContext(ctxContext)
     const {state:{task}} = context
-    console.log(task);
     
     return (
         <ctxContext.Consumer>
@@ -15,7 +14,7 @@ export default function Search(props) {
                             <h1>Componenente busqueda</h1>
                             <form>
                                 <input
-                                type="text"
+                                type="search"
                                 name="searchinput"
                                 placeholder="Busca las tareas"
                                 id="searchinput"

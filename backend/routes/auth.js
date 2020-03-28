@@ -1,18 +1,12 @@
-const express = require('express');
-const router = express.Router();
-const User = require('../models/User');
-const passport = require('../config/passport');
+const router              = require('express').Router();
+const User                = require('../models/User');
+const passport            = require('../config/passport');
+const {controlSignup, controlLogin, controlCreateNew}     = require('../controllers/auth')
 
-router.post('/signup', (req, res, next) => {
-  User.register(req.body, req.body.password)
-    .then((user) => res.status(201).json({ user }))
-    .catch((err) => res.status(500).json({ err }));
-});
+router.post('/signup', controlSignup);
 
-router.post('/login', passport.authenticate('local'), (req, res, next) => {
-  const { user } = req;
-  res.status(200).json({ user });
-});
+router.post('/login',controlLogin);
+router.post('/new', controlCreateNew)
 
 router.get('/logout', (req, res, next) => {
   req.logout();

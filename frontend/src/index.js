@@ -1,9 +1,9 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom'
-import ProviderClass from './context'
-import Routes from './Router';
-import * as serviceWorker from './serviceWorker';
+import React                    from 'react';
+import ReactDOM                 from 'react-dom';
+import { BrowserRouter }        from 'react-router-dom'
+import ProviderClass            from './context'
+import Routes                   from './Router';
+import * as serviceWorker       from './serviceWorker';
 
 function ContextFull(){
     return (

@@ -1,15 +1,17 @@
 import React from 'react'
-import AUTH_SERVICES from '../../services'
 
- function UserForm({asfunction, page, userfunction}) {
-        const submitTocontext = (e)=>{
-                userfunction(e)
-                .then(res=>res).catch(err=>err)
+ function UserForm({asfunction, page, userfunction, loginfunction}) {
+        const submitUser =  (e)=>{
+            userfunction(e)
         }
+        const submitLogin =  (e)=>{
+            loginfunction(e)
+        }
+
         
     return (
         <>
-        <form onSubmit={submitTocontext} >
+        <form onSubmit={page!=="login"?submitUser:submitLogin} >
             
         <input 
         name="name"
@@ -30,17 +32,22 @@ import AUTH_SERVICES from '../../services'
         <input 
         name="password"
         type ="password"
+        minLength="3"
         placeholder="Password"
         id="password"
+        required
         onChange={asfunction}
         />
-
+{/* enderizado condicional basado en match.params para saber en qué página estamos, 
+        Login o signup */}
         { page !== "login" && (
         <input 
         name="confirmPassword"
         type ="password"
         placeholder="Confirm Password"
         id="confirmPassword"
+        minLength="3"
+        required
         onChange = {asfunction}
         />
         )}

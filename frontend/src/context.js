@@ -1,29 +1,34 @@
-import React, { createContext,Component } from 'react'
-import { withRouter } from 'react-router-dom'
+import React, { createContext,Component }        from 'react'
+import { withRouter }                            from 'react-router-dom'
+import { SignupServices, 
+         LoginServices,
+         createTask }                            from './services/index'
 
-export const ctxContext = createContext()
+
+  export const ctxContext = createContext()
 
 class ProviderClass extends Component {
   
-  
+ constructor(){
+   super()
+   this.initialState=this.state
+ }
   state = {
     pruebas:'holaaaaa',
     isUserExist:false,
     isUserLogged:false,
     user:null,
-    timer:{
-      duration:'',      
-    },
+    userTasks:[],
     task:{
-      name:'',
-      type:'',
+      nametask:"",
+      typetask:"",
+      timing:"",
+      description:"",
       done:false,
       pending:true,
       initialized:false,
-      description:"",
       parts:[]
-      },
-    
+    },
     Userform:{
       name:'',
       email:'',
@@ -31,35 +36,93 @@ class ProviderClass extends Component {
       confirmPassword:''
     }
   }  
-
   componentDidMount =  () => { 
-    console.log("Traer data para ll")
-    
-  }
+    this.initialState=this.state
+
+    console.log("Traer data para la home")}
+
       Login=(e)=>{
         let { Userform } = this.state
          const {name, value} = e.target
          Userform[name] = value
-         this.setState({Userform})}
+         this.setState({Userform})
+        }
 
       Signup=(e)=>{
         const { Userform } = this.state
         const {name, value} = e.target
         Userform[name] = value
+
         this.setState({Userform})
       }
-      submitUser = (e)=>{
+      newTasks=(e)=>{
+        const { task } = this.state
+        const {name, value} = e.target
+        task[name] = value
+        this.setState({task})
+        }
+      submitUser = async (e)=>{
         e.preventDefault();
-            console.log(e);
-          console.log("me ejecuté");
-          
+        const { Userform } = this.state
+        const { Userform:{password,confirmPassword} } = this.state
+        if( password==""&&confirmPassword==""){
+          alert("Llena todos lo campos")
+          //Introducir accion que retroaloimente al usuario
+        }else if(password=="" || confirmPassword==""){
+          alert("No puedes enviar elementos vacios")
+          //Introducir accion que retroaloimente al usuario
+        }else if(password===confirmPassword){
+          //Redireccion si hubo registro o no
+        const {data:{msg,status} } = await SignupServices( Userform )
+        status?this.props.history.push('/login'):this.props.history.push('/signup')
+          console.log(`Message: ${msg}`, ` ||   The status is:${status}`);
+        }else{
+          alert("Son diferentes tus contraseñas")
+          //Introducir accion que retroaloimente al usuario
+        }
       }
 
+      submitLogin = async (e) =>{
+        e.preventDefault();
+        const { Userform } = this.state
+        const {data:{status, name, allTasksUser} } = await LoginServices(Userform)
+        
+       
+          this.setState({isUserLogged:status, user:name, userTasks:allTasksUser})
+          this.props.history.push('/profile')      
+        }
+        submitTask = async (e) =>{
+          e.preventDefault();
+          const {task, user}= this.state
+          task.user = user
+          const data = await createTask(task)
+          console.log(data);
+          
+
+        }
+
+
+        logoutfunction= ()=>{
+          const {initialState}=this
+          this.setState(this.state = initialState)}
+
   render() {
-    const {state,Signup, Login, submitUser} = this
+    const {state, 
+      Signup, 
+      Login, 
+      submitUser,
+       submitLogin,
+       submitTask, 
+      newTasks, logoutfunction} = this
     return (
       <ctxContext.Provider
-        value={{state, Signup, Login, submitUser}}>
+        value={{state, 
+        Signup, 
+        Login, 
+        submitUser, 
+        submitLogin, 
+        submitTask,
+        newTasks,logoutfunction}}>
         {this.props.children}
       </ctxContext.Provider>
     )

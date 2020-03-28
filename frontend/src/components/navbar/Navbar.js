@@ -4,15 +4,20 @@ import { NavLink, withRouter } from 'react-router-dom'
 
 function Navbar() {
     const options = useContext(ctxContext)
-    return (
+    const {isUserLogged} = options.state
+        return (
             <ctxContext.Consumer>
                 {context =>(
                     <>
-                    <NavLink exact to='/'>Home</NavLink>|
-                    <NavLink exact to='/signup'>signup</NavLink>|
-                    <NavLink exact to='/login'>login</NavLink>|
-                    <NavLink exact to='/profile'>Profile</NavLink>|
-                    <NavLink exact to='/taskdetails'>taskdetails</NavLink>|
+                    <NavLink exact to='/'>  Home |</NavLink>
+                    <NavLink exact to='/signup'>  signup |</NavLink>
+                    <NavLink exact to='/login'>  login |</NavLink>
+                    {isUserLogged === true && ( <>
+                        <NavLink exact to='/profile'>  Profile |</NavLink>
+                        <NavLink exact to='/taskdetails'>  taskdetails |</NavLink>
+                        <NavLink exact to='/LogOut'>  LogOut|</NavLink>
+                    </>
+                    )}
                     </>
                     
                 )}
