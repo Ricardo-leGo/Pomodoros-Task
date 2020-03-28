@@ -19,10 +19,10 @@ exports.controlSignup = async(req,res) =>{
 
 exports.controlLogin = async(req,res)=>{
     
-    let {email, password} = req.body
-    let isUserExist =  await User.findOne({email})
-    let {_id, name} = isUserExist 
-    let allTasksUser = await Task.find({author:_id}).sort({'createdAt':-1})
+    const {email, password} = req.body
+    const isUserExist =  await User.findOne({email})
+    const {_id, name} = isUserExist 
+    const allTasksUser = await Task.find({author:_id}).sort({'createdAt':-1})
     // const allTasksUser = await Task.find({author:_id})
     
 console.log(allTasksUser);
@@ -32,7 +32,7 @@ console.log(allTasksUser);
 
         
       
-     let equals = bcrypt.compareSync(password, isUserExist.password)
+     const equals = bcrypt.compareSync(password, isUserExist.password)
      equals? res.status(200).json({msg:'All good', status:true, name, allTasksUser}):
              res.status(401).json({msg:"Something went wrong"})
 

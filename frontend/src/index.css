@@ -1,0 +1,16 @@
+body{
+    background-color: #FFF8E1;
+    background-image: url('./cloud.png');
+    background-size: 35%;
+    background-repeat: no-repeat;
+    background-position: 25% 15%;
+    overflow: hidden;
+}
+
+
+#Containernavbar{
+    background-color: cyan;
+    margin: 0;
+}
+
+

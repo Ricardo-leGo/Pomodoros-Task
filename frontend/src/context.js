@@ -3,6 +3,9 @@ import { withRouter }                            from 'react-router-dom'
 import { SignupServices, 
          LoginServices,
          createTask }                            from './services/index'
+import './index.css'
+
+
 
 
   export const ctxContext = createContext()
@@ -38,8 +41,7 @@ class ProviderClass extends Component {
   }  
   componentDidMount =  () => { 
     this.initialState=this.state
-
-    console.log("Traer data para la home")}
+  }
 
       Login=(e)=>{
         let { Userform } = this.state
@@ -86,8 +88,6 @@ class ProviderClass extends Component {
         e.preventDefault();
         const { Userform } = this.state
         const {data:{status, name, allTasksUser} } = await LoginServices(Userform)
-        
-       
           this.setState({isUserLogged:status, user:name, userTasks:allTasksUser})
           this.props.history.push('/profile')      
         }
@@ -96,11 +96,7 @@ class ProviderClass extends Component {
           const {task, user}= this.state
           task.user = user
           const data = await createTask(task)
-          console.log(data);
-          
-
         }
-
 
         logoutfunction= ()=>{
           const {initialState}=this
