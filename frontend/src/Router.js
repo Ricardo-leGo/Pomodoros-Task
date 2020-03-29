@@ -1,6 +1,5 @@
-import React, { useContext } from 'react';
-import {ctxContext} from './context'
-import { Switch, Route, Redirect } from 'react-router-dom';
+import React from 'react';
+import { Switch, Route } from 'react-router-dom';
 import NotFound from './components/404/NotFound.js';
 import Navbar from './components/navbar/Navbar';
 import signup from './pages/signup';

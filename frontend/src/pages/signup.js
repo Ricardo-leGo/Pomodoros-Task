@@ -24,9 +24,7 @@ font-family: 'Cute Font', cursive;
 `
 
 const FormAuth = styled.div`
-
 font-family: 'Baloo 2', cursive;
-
 width:35vw;
 height:100vh;
 text-align:center;
@@ -47,7 +45,6 @@ input[type=submit]{
     font-size:1.5rem;
     text-transform:capitalize;}
     font-family: 'Baloo 2', cursive;
-
 }
 `
 function Signup(props) {

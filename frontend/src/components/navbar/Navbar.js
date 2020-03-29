@@ -6,8 +6,9 @@ import styled from 'styled-components'
 const NavContainer = styled.div`
     background-color:cyan;
         position:absolute;
-        top:2%;
-        left:2%;
+        top:1%;
+        right:1%;
+        z-index:10000;
 `
 
 

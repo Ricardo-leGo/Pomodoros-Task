@@ -19,9 +19,9 @@ input{
     border-radius:15px;
     text-align:center;
     border-color:#FFF8E1;
-    margin:2% auto;
+    margin:3% auto;
     font-size:1.5rem;
-    box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 3px -2px, rgba(0, 0, 0, 0.14) 0px 3px 4px 0px, rgba(0, 0, 0, 0.12) 0px 1px 8px 0px
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 3px -2px, rgba(0, 0, 0, 0.14) 0px 3px 4px 0px, rgba(0, 0, 0, 0.12) 0px 1px 8px 0px
 }
 input[type=submit]{
     width:95%;
@@ -36,8 +36,6 @@ input[type=submit]{
         const submitLogin =  (e)=>{
             loginfunction(e)
         }
-
-        
     return (
         <>
         <Form onSubmit={page!=="login"?submitUser:submitLogin} >
@@ -47,6 +45,7 @@ input[type=submit]{
         type ="text"
         placeholder="Name"
         id="name"
+        required
         onChange={asfunction}
         />
 
@@ -55,6 +54,7 @@ input[type=submit]{
         type ="email"
         placeholder="Email"
         id="email"
+        required
         onChange={asfunction}
         />
 

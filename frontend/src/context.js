@@ -19,7 +19,8 @@ class ProviderClass extends Component {
   state = {
     pruebas:'holaaaaa',
     isUserExist:false,
-    isUserLogged:false,
+    // Cambia a isUserLogged:false
+    isUserLogged:true,
     user:null,
     userTasks:[],
     task:{
@@ -67,10 +68,10 @@ class ProviderClass extends Component {
         e.preventDefault();
         const { Userform } = this.state
         const { Userform:{password,confirmPassword} } = this.state
-        if( password==""&&confirmPassword==""){
+        if( password===""&&confirmPassword===""){
           alert("Llena todos lo campos")
           //Introducir accion que retroaloimente al usuario
-        }else if(password=="" || confirmPassword==""){
+        }else if(password==="" || confirmPassword===""){
           alert("No puedes enviar elementos vacios")
           //Introducir accion que retroaloimente al usuario
         }else if(password===confirmPassword){
@@ -88,14 +89,16 @@ class ProviderClass extends Component {
         e.preventDefault();
         const { Userform } = this.state
         const {data:{status, name, allTasksUser} } = await LoginServices(Userform)
-          this.setState({isUserLogged:status, user:name, userTasks:allTasksUser})
+        // Cambia is isUserLoggeda  isUserLogged:status 
+          this.setState({isUserLogged:true, user:name, userTasks:allTasksUser})
           this.props.history.push('/profile')      
         }
         submitTask = async (e) =>{
           e.preventDefault();
           const {task, user}= this.state
           task.user = user
-          const data = await createTask(task)
+           createTask(task)
+
         }
 
         logoutfunction= ()=>{

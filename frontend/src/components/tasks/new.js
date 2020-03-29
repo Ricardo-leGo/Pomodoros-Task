@@ -1,5 +1,34 @@
 import React, {useContext} from 'react'
 import { ctxContext } from '../../context'
+import styled from 'styled-components'
+
+const NewForm = styled.form`
+display:flex;
+flex-flow:column wrap;
+justify-content:center;
+texxt-align:center;
+width:30%;
+height:40vh;
+background-color:#735567;
+border-radius:15px;
+box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 3px -2px, rgba(0, 0, 0, 0.14) 0px 3px 4px 0px, rgba(0, 0, 0, 0.12) 0px 1px 8px 0px;
+
+
+input, select, option{
+    text-align:center;
+    height:15%;
+    border:transparent;
+    margin:2%;
+    font-size:1.4rem;
+    color:#FFF8E1;
+    background-color:transparent;
+}
+
+
+input[type="submit"]{
+}
+
+`
 
 export default function New({createNewTask,inputs}) {
     const context = useContext(ctxContext)
@@ -11,9 +40,7 @@ export default function New({createNewTask,inputs}) {
             {
                 context =>(
                     <>
-                    <h1>New</h1>
-                    <button type="button" id="buttonNew">New +</button>
-                    <form className="newTaskForm" id="newTaskForm" onSubmit={creatTask}>
+                    <NewForm className="newTaskForm" id="newTaskForm" onSubmit={creatTask}>
                         <input
                         type="text"
                         name="nametask"
@@ -50,7 +77,7 @@ export default function New({createNewTask,inputs}) {
                         <input
                         type="submit"
                         value="Crear"/>
-                     </form>
+                     </NewForm>
                     </>
                 )
             }
