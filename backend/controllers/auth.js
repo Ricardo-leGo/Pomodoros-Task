@@ -25,8 +25,6 @@ exports.controlLogin = async(req,res)=>{
     const allTasksUser = await Task.find({author:_id}).sort({'createdAt':-1})
     // const allTasksUser = await Task.find({author:_id})
     
-console.log(allTasksUser);
-
     
     if(!isUserExist) res.status(500).json({msg:"Este usuario no existe, crea una cuenta.",status:false })
 
@@ -45,12 +43,12 @@ console.log(allTasksUser);
 exports.controlCreateNew = async (req,res) =>{
     const { user } = req.body
     let task = req.body    
-   const author = await User.findOne({name:user})
+    const author = await User.findOne({name:user})
     task.author = author._id
     let id = task.author
     const createTask = await Task.create(task)
     const allTasksUser = await Task.find({author:id}).sort({'createdAt':-1})
-        res.status(200).json({msg:"Tasks  Updated", allTasksUser,})    
+    res.status(200).json({msg:"Tasks  Updated", allTasksUser,})    
     
     
 }

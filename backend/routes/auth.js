@@ -1,20 +1,26 @@
 const router              = require('express').Router();
 const User                = require('../models/User');
 const passport            = require('../config/passport');
-const {controlSignup, controlLogin, controlCreateNew}     = require('../controllers/auth')
+const {controlSignup,
+      controlLogin,
+      controlCreateNew}   = require('../controllers/auth')
 
-router.post('/signup', controlSignup);
+router.post(  '/signup'   ,controlSignup      );
+router.post(  '/login'    ,controlLogin       );
+router.post(  '/new'      ,controlCreateNew   );
 
-router.post('/login',controlLogin);
-router.post('/new', controlCreateNew)
+router.get(   '/logout', 
 
-router.get('/logout', (req, res, next) => {
+(req, res, next) => {
   req.logout();
-  req.session.destroy()
+  req.session.destroy();
   res.status(200).json({ msg: 'Logged out' });
+
 });
 
-router.get('/profile', isAuth, (req, res, next) => {
+router.get('/profile', 
+isAuth, 
+(req, res, next) => {
   User.findById(req.user._id)
     .then((user) => res.status(200).json({ user }))
     .catch((err) => res.status(500).json({ err }));
