@@ -20,15 +20,15 @@ font-family: 'Baloo 2', cursive;
 function Barprofile(props) {
     const context = useContext(ctxContext)
     let [doneTasks, setDoneTask]= useState([])
-    console.log(doneTasks);
     
      const {userTasks} = context.state
+
 
     return (
         <BarrProfile>
             
                 <h2>{context.state.user}</h2>
-                <h2>Terminadas: {doneTasks}</h2>
+                <h2>Terminadas: {userTasks.length}</h2>
                 <h2>No iniciadas</h2>
                 <h2>Iniciadas</h2>
                 <Link to="/logout">Salir</Link>

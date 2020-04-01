@@ -63,6 +63,9 @@ class ProviderClass extends Component {
         const {name, value} = e.target
         task[name] = value
         this.setState({task})
+
+
+        
         }
       submitUser = async (e)=>{
         e.preventDefault();
@@ -97,7 +100,11 @@ class ProviderClass extends Component {
           e.preventDefault();
           const {task, user}= this.state
           task.user = user
-           createTask(task)
+           const {data:{allTasksUser}} = await createTask(task)
+           this.setState({userTasks:allTasksUser})
+           
+           
+           
 
         }
 

@@ -47,12 +47,10 @@ exports.controlCreateNew = async (req,res) =>{
     let task = req.body    
    const author = await User.findOne({name:user})
     task.author = author._id
-
-    
-
-   
+    let id = task.author
     const createTask = await Task.create(task)
-    console.log(createTask);
+    const allTasksUser = await Task.find({author:id}).sort({'createdAt':-1})
+        res.status(200).json({msg:"Tasks  Updated", allTasksUser,})    
     
     
 }
