@@ -90,7 +90,7 @@ class ProviderClass extends Component {
         const { Userform } = this.state
         const {data:{status, name, allTasksUser} } = await LoginServices(Userform)
         // Cambia is isUserLoggeda  isUserLogged:status 
-          this.setState({isUserLogged:true, user:name, userTasks:allTasksUser})
+          this.setState({ isUserLogged:status, user:name, userTasks:allTasksUser})
           this.props.history.push('/profile')      
         }
         submitTask = async (e) =>{

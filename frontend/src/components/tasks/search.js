@@ -16,12 +16,14 @@ h1{
 
 }
 #searchbtn{
-    height:20%;
+    height:15%;
     width:50%;
     margin:0 auto;
     border:transparent;
     background-color:#735567;
     color:#FFF8E1;
+    border-radius:15px;
+    font-size:1.4rem;
 
     box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 3px -2px, rgba(0, 0, 0, 0.14) 0px 3px 4px 0px, rgba(0, 0, 0, 0.12) 0px 1px 8px 0px;
 }

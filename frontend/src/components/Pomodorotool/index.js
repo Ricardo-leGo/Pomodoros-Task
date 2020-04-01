@@ -61,7 +61,6 @@ export default function Index() {
         }
     return (
         <div className="pomodoroTimer">          
-            <h1> Pomodoro Timer</h1>
             <h3 id="pause"> Minutos: {countInTimeout}:{count}</h3>
             <select  onChange={AsignTime}>
                     <option>10</option>

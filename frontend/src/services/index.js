@@ -20,6 +20,9 @@ export const createTask = async(task) =>{
   const data = await Services.post('/new', task)
   return data
 }
+
+
+
 // const AUTH_SERVICES = {
 //   test: async () => {
 //     return await SERVICE.get('/');
