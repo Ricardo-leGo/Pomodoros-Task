@@ -18,7 +18,6 @@ const Routes = () => (
       <Route exact path="/profile" component={profile} />
       <Route exact path="/taskdetails" component={taskdetails} />
       <Route exact path="/logout" component={Logout} />
-      <Route exact path="/" component={Home} />
       <Route component={NotFound} />
     </Switch>
   </>

@@ -13,6 +13,8 @@ flex-flow:column wrap;
 align-itmes:center;
 justify-content:center;
 text-align:center;
+font-family: 'Baloo 2', cursive;
+
 `
 
 function Barprofile(props) {

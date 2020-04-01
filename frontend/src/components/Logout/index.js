@@ -6,7 +6,7 @@ const context = useContext(ctxContext)
     return (
     <>
     {context.logoutfunction()}
-            <Redirect to='/'></Redirect>
+            <Redirect to='/signup'></Redirect>
     </>
     )
 }

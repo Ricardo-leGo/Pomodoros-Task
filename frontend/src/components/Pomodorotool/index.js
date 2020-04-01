@@ -1,4 +1,41 @@
 import React, {useState} from 'react'
+import styled from 'styled-components'
+
+const WapperTimer = styled.div`
+box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 3px -2px, rgba(0, 0, 0, 0.14) 0px 3px 4px 0px, rgba(0, 0, 0, 0.12) 0px 1px 8px 0px;
+
+    width:100%;
+    border-radius:15px;
+    margin:0;
+    padding:2%;
+    display:flex;
+    flex-flow:column wrap;
+    justify-content:space-center;
+    box-sizing:border-box;
+    h1{
+        text-align:center;
+        font-size:3rem;
+        margin:-2%;
+    }
+    `
+    
+
+const WrapperTools = styled.div`
+display:flex;
+flex-flow:row wrap;
+justify-content:space-evenly;
+box-sizing:border-box;
+      
+    select,input{
+        font-family: 'Baloo 2', cursive;
+
+        border-color:transparent;
+        background-color:gray;
+        color:white;
+    }
+
+
+`
 export default function Index() {
     let TimeInit            = '00'
     let minutes             = 0
@@ -60,19 +97,23 @@ export default function Index() {
         const ResetInterval = () => {
         }
     return (
-        <div className="pomodoroTimer">          
-            <h3 id="pause"> Minutos: {countInTimeout}:{count}</h3>
+        <WapperTimer>          
+            <h1 id="pause">{countInTimeout}:{count}</h1>
+            <WrapperTools>
             <select  onChange={AsignTime}>
                     <option>10</option>
                     <option>15</option>
                     <option>30</option>
 
             </select>
-            <input type="button" value= "Play" onClick={countdown}/>
+
+            <input id="count" type="button" value= "Play" onClick={countdown}/>
             <input  type="button" value= "Pause" onClick={PauseInterval}/>
             <input type="button" value= "Stop" onClick={StopInterval}/>
             <input type="button" value= "Reset" />
+            </WrapperTools>
+
             
-        </div>
+        </WapperTimer>
     )
 }

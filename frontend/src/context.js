@@ -20,7 +20,7 @@ class ProviderClass extends Component {
     pruebas:'holaaaaa',
     isUserExist:false,
     // Cambia a isUserLogged:false
-    isUserLogged:true,
+    isUserLogged:false,
     user:null,
     userTasks:[],
     task:{
@@ -102,6 +102,7 @@ class ProviderClass extends Component {
         }
 
         logoutfunction= ()=>{
+          console.warn("hola")
           const {initialState}=this
           this.setState(this.state = initialState)}
 

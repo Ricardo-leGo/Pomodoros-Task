@@ -5,7 +5,7 @@ import styled from 'styled-components'
 const Form = styled.form`
 width:60%;
 height:60%;
-margin:0 auto;
+margin:-20% auto;
 display:flex;
 flex-flow:column wrap;
 justify-content:center;

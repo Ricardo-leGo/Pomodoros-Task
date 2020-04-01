@@ -25,13 +25,12 @@ function Navbar() {
             <ctxContext.Consumer>
                 {context =>(
                     <NavContainer>
-                    <Anchor exact to='/'>  Home </Anchor>
                     <Anchor exact to='/signup'>  signup </Anchor>
                     <Anchor exact to='/login'>  login </Anchor>
                     {isUserLogged === true && ( <>
                     <Anchor exact to='/profile'>  Profile </Anchor>
                     <Anchor exact to='/taskdetails'>  taskdetails </Anchor>
-                    <Anchor exact to='/LogOut'>  LogOut</Anchor>
+                    <Anchor exact to='/logout'>  LogOut</Anchor>
                     </>
                     )}
                     </NavContainer>

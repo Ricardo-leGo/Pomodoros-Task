@@ -19,16 +19,24 @@ import Cardtasks from '../components/cards/Cardtasks'
         padding:0;
         position:absolute;
         left:0;
-        top:0;`
+        top:0;
+        `
+
     const AuxiliarContainer = styled.div`
         width:70%;
         box-sizing:border-box;`
-    const Tasktimer = styled.div`    
+    const Tasktimer = styled.div`
+    position:relative;
+    width:70%
+    top:1%;
+    left:-4%;
+    heigth:30vh;
+        
     `
     const TasksTools = styled.div`
         width:100%;
         heigth:40vh;
-        padding-top:3%;
+        padding-top:2.5%;
         margin-left:-5%;
         display:flex;
         flex-flow:row wrap;
