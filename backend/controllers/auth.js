@@ -52,3 +52,18 @@ exports.controlCreateNew = async (req,res) =>{
     
     
 }
+
+
+exports.deleteTasks = async (req,res)=>{
+    // console.log(req);console.log(req.body);
+        const { id } = req.body
+        
+
+        const deleted = await Task.findByIdAndDelete({_id:id})
+        const {author} = deleted
+        const updatedTasks = await Task.find({author:author})
+        console.log(updatedTasks.length);
+        
+        res.status(200).json({msg:"Task Deleted", updatedTasks})
+    
+}

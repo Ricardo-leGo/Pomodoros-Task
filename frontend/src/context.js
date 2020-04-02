@@ -43,7 +43,7 @@ class ProviderClass extends Component {
   componentDidMount =  () => { 
     this.initialState=this.state
   }
-
+  
       Login=(e)=>{
         let { Userform } = this.state
          const {name, value} = e.target
@@ -58,15 +58,14 @@ class ProviderClass extends Component {
 
         this.setState({Userform})
       }
+
       newTasks=(e)=>{
         const { task } = this.state
         const {name, value} = e.target
         task[name] = value
-        this.setState({task})
-
-
-        
+        this.setState({task})        
         }
+
       submitUser = async (e)=>{
         e.preventDefault();
         const { Userform } = this.state
@@ -102,10 +101,6 @@ class ProviderClass extends Component {
           task.user = user
            const {data:{allTasksUser}} = await createTask(task)
            this.setState({userTasks:allTasksUser})
-           
-           
-           
-
         }
 
         logoutfunction= ()=>{

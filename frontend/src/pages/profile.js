@@ -1,12 +1,13 @@
 import React, { Component, useContext } from 'react'
 import { ctxContext }   from '../context'
 import styled from 'styled-components'
-import { alltasks }     from '../services'
+import { deleteTask }     from '../services'
 import Barprofile       from '../components/Barprofile'
 import New              from '../components/tasks/new'
 import Search           from '../components/tasks/search'
 import History          from '../components/tasks/history'
 import Cardtasks from '../components/cards/Cardtasks'
+
 
 
 
@@ -31,8 +32,13 @@ import Cardtasks from '../components/cards/Cardtasks'
     top:1%;
     left:-4%;
     heigth:30vh;
-        
+    overflow-y:scroll;
+    display:flex;
+    flex-flow:row wrap;
+    justify-content:space-evenly;
     `
+
+
     const TasksTools = styled.div`
         width:100%;
         heigth:40vh;
@@ -44,26 +50,63 @@ import Cardtasks from '../components/cards/Cardtasks'
     `
 
  class Profile extends Component {
+
      state={
          tasks:[]
      }
+
+
+
      componentDidMount(){
         const {isUserLogged} = this.context.state
             if(isUserLogged!==true){
                 this.props.history.push('/login')
             }else{      
                 const {userTasks} = this.context.state
-                this.setState({tasks: userTasks})
-                // const allUserTasks = await alltasks()
+                
+                this.setState(this.state.tasks= userTasks)
             }   
         }
-        render() {
 
-            return (
+        changeState(updatedTasks){
+            if(updatedTasks!==undefined){
+                this.context.state.userTasks=updatedTasks
+                this.setState({tasks:updatedTasks})
+                console.log(this.state.tasks);
+                console.log('Hola ');
                 
+                
+                
+            }else{
+                const {userTasks}= this.context.state
+                this.setState({tasks:userTasks})
+                console.log(this.state.tasks);
+                
+            }
+        }
+
+        deleteitemTask= async e => {
+            
+            const {data:{updatedTasks}}  = await deleteTask(e);
+            this.changeState(updatedTasks)
+                
+     
+        }
+        
+        
+        render() {
+            if(this.state.tasks.length<this.context.state.userTasks.length ||this.state.tasks.length>this.context.state.userTasks.length){
+                this.changeState()
+            }else {
+                console.log(this.state.tasks);
+                
+            }
+            return (
+                   
                 <ctxContext.Consumer>
                         {context => (
-                    
+                            
+
                         <Profilecontainer>
                             <Barprofile/>
                             <AuxiliarContainer>
@@ -73,7 +116,26 @@ import Cardtasks from '../components/cards/Cardtasks'
                                     <History/>
                             </TasksTools>
                             <Tasktimer>
-                                    <Cardtasks/>
+                       
+                                 {   
+                    this.state.tasks.map((el,i)=>(
+                            
+                    <Cardtasks
+                    key             =       {         i             }    
+                    description     =       {   el.description      }
+                    done            =       {   el.done             }
+                    initialized     =       {   el.initialized      }
+                    nametask        =       {   el.nametask         }
+                    pending         =       {   el.pending          }
+                    timing          =       {   el.timing           }
+                    typetask        =       {   el.typetask         }
+                    id              =       {   el._id              }
+                    author          =       {   el.author           }
+                    deletefunction  =       {   this.deleteitemTask }
+                        />
+                        ))
+                                }
+                                
                             </Tasktimer>
                             </AuxiliarContainer>
                         </Profilecontainer>

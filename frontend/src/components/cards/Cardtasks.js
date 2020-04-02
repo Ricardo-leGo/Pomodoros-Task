@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import {ctxContext} from  '../../context'
 import styled from 'styled-components'
 import Pomodorotool     from '../Pomodorotool'
 import { NavLink } from 'react-router-dom'
@@ -36,18 +37,29 @@ align-items:baseline;
 
 `
 
-function Cardtasks() {
+function Cardtasks({
+    key,
+    description,
+    done,
+    initialized,
+    nametask,
+    pending,
+    timing,
+    typetask,
+    author,
+    id,
+    deletefunction}) {
     return (
-        <CardContainer>
+        <CardContainer key={key}>
             <WrapperSuperior>
-            <h4>Task Name</h4>
-            <p>Category</p>
+            <h4>Name:{nametask}</h4>
+            <p>Categoria:{typetask}</p>
             </WrapperSuperior>
 
             <Pomodorotool/>
             <WrapperInf>
-            <p>Status</p>
-            <NavLink to={`/task/id`}>Details</NavLink>
+            <p>`Status: ${pending}`</p>
+            <button id={id} onClick={(e)=>deletefunction(e)}>X</button>
             </WrapperInf>
 
         </CardContainer>

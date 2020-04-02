@@ -20,21 +20,12 @@ export const createTask = async(task) =>{
   const data = await Services.post('/new', task)
   return data
 }
+export const deleteTask = async({target}) =>{
+const { id } = target 
+console.log(id);
 
 
-
-// const AUTH_SERVICES = {
-//   test: async () => {
-//     return await SERVICE.get('/');
-//   },
-//   signup: async (user) => {
-//     return await SERVICE.post('/signup', user);
-//   },
-//   login: async (user) => {
-//     return await SERVICE.post('/login', user);
-//   },
-//   logOut: async () => {
-//     return await SERVICE.get('/logout');
-//   }
-// }
-
+  
+  const data = await Services.post('/deletetask', {id})
+  return data
+}

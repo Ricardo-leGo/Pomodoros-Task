@@ -3,14 +3,18 @@ const User                = require('../models/User');
 const passport            = require('../config/passport');
 const {controlSignup,
       controlLogin,
-      controlCreateNew}   = require('../controllers/auth')
+      controlCreateNew,
+      deleteTasks}        = require('../controllers/auth')
 
-router.post(  '/signup'   ,controlSignup      );
-router.post(  '/login'    ,controlLogin       );
-router.post(  '/new'      ,controlCreateNew   );
+router.post(  '/signup'         ,controlSignup      );
+router.post(  '/login'          ,controlLogin       );
+router.post(  '/new'            ,controlCreateNew   );
+router.post(  '/deletetask'     , deleteTasks       );
 
-router.get(   '/logout', 
 
+router.get(   
+
+  '/logout', 
 (req, res, next) => {
   req.logout();
   req.session.destroy();
