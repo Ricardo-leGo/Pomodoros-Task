@@ -54,9 +54,6 @@ import Cardtasks from '../components/cards/Cardtasks'
      state={
          tasks:[]
      }
-
-
-
      componentDidMount(){
         const {isUserLogged} = this.context.state
             if(isUserLogged!==true){
@@ -71,42 +68,28 @@ import Cardtasks from '../components/cards/Cardtasks'
         changeState(updatedTasks){
             if(updatedTasks!==undefined){
                 this.context.state.userTasks=updatedTasks
-                this.setState({tasks:updatedTasks})
-                console.log(this.state.tasks);
-                console.log('Hola ');
-                
-                
-                
+                this.setState({tasks:updatedTasks}) 
             }else{
                 const {userTasks}= this.context.state
                 this.setState({tasks:userTasks})
-                console.log(this.state.tasks);
-                
             }
         }
 
         deleteitemTask= async e => {
-            
             const {data:{updatedTasks}}  = await deleteTask(e);
             this.changeState(updatedTasks)
-                
-     
         }
         
         
         render() {
-            if(this.state.tasks.length<this.context.state.userTasks.length ||this.state.tasks.length>this.context.state.userTasks.length){
+            if( this.state.tasks.length<this.context.state.userTasks.length ||
+                this.state.tasks.length>this.context.state.userTasks.length)
+                {
                 this.changeState()
-            }else {
-                console.log(this.state.tasks);
-                
-            }
+                }
             return (
-                   
                 <ctxContext.Consumer>
                         {context => (
-                            
-
                         <Profilecontainer>
                             <Barprofile/>
                             <AuxiliarContainer>
