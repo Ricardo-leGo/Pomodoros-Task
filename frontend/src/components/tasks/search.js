@@ -40,7 +40,7 @@ h1{
 }
 `
 
-export default function Search(props) {
+export default function Search({filter}) {
     const context = useContext(ctxContext)
     const {state:{task}} = context
     
@@ -56,8 +56,13 @@ export default function Search(props) {
                                 name="searchinput"
                                 placeholder="Busca las tareas"
                                 id="searchinput"
+                                onChange={function (e){filter(e)}}
                                 />
-                                <input type="button" id="searchbtn" value="Buscar"/>
+                                <input 
+                                type="button" 
+                                id="searchbtn" 
+                                value="Buscar" 
+                                />
                             </SearchForm>
                     </>
                 )

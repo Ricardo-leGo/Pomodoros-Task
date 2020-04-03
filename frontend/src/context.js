@@ -1,8 +1,7 @@
 import React, { createContext,Component }        from 'react'
 import { withRouter }                            from 'react-router-dom'
 import { SignupServices, 
-         LoginServices,
-         createTask }                            from './services/index'
+         LoginServices}                          from './services/index'
 import './index.css'
 
 
@@ -59,13 +58,6 @@ class ProviderClass extends Component {
         this.setState({Userform})
       }
 
-      newTasks=(e)=>{
-        const { task } = this.state
-        const {name, value} = e.target
-        task[name] = value
-        this.setState({task})        
-        }
-
       submitUser = async (e)=>{
         e.preventDefault();
         const { Userform } = this.state
@@ -95,13 +87,7 @@ class ProviderClass extends Component {
           this.setState({ isUserLogged:status, user:name, userTasks:allTasksUser})
           this.props.history.push('/profile')      
         }
-        submitTask = async (e) =>{
-          e.preventDefault();
-          const {task, user}= this.state
-          task.user = user
-           const {data:{allTasksUser}} = await createTask(task)
-           this.setState({userTasks:allTasksUser})
-        }
+
 
         logoutfunction= ()=>{
           console.warn("hola")
@@ -115,7 +101,7 @@ class ProviderClass extends Component {
       submitUser,
        submitLogin,
        submitTask, 
-      newTasks, logoutfunction} = this
+      logoutfunction} = this
     return (
       <ctxContext.Provider
         value={{state, 
@@ -124,7 +110,7 @@ class ProviderClass extends Component {
         submitUser, 
         submitLogin, 
         submitTask,
-        newTasks,logoutfunction}}>
+        logoutfunction}}>
         {this.props.children}
       </ctxContext.Provider>
     )

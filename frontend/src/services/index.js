@@ -23,9 +23,6 @@ export const createTask = async(task) =>{
 export const deleteTask = async({target}) =>{
 const { id } = target 
 console.log(id);
-
-
-  
   const data = await Services.post('/deletetask', {id})
   return data
 }

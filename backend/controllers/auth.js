@@ -41,29 +41,26 @@ exports.controlLogin = async(req,res)=>{
 
 
 exports.controlCreateNew = async (req,res) =>{
+
+console.log(req.body);
     const { user } = req.body
     let task = req.body    
-    const author = await User.findOne({name:user})
+    const author = await User.findOne({ name: user })
+    
     task.author = author._id
     let id = task.author
     const createTask = await Task.create(task)
     const allTasksUser = await Task.find({author:id}).sort({'createdAt':-1})
-    res.status(200).json({msg:"Tasks  Updated", allTasksUser,})    
+    res.status(200).json({msg:"Task  Created", allTasksUser,})    
     
     
 }
 
 
 exports.deleteTasks = async (req,res)=>{
-    // console.log(req);console.log(req.body);
         const { id } = req.body
-        
-
         const deleted = await Task.findByIdAndDelete({_id:id})
         const {author} = deleted
-        const updatedTasks = await Task.find({author:author})
-        console.log(updatedTasks.length);
-        
+        const updatedTasks = await Task.find({author:author}).sort({'createdAt':-1})      
         res.status(200).json({msg:"Task Deleted", updatedTasks})
-    
 }

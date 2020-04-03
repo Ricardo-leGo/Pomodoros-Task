@@ -59,7 +59,7 @@ function Cardtasks({
             <Pomodorotool/>
             <WrapperInf>
             <p>`Status: ${pending}`</p>
-            <button id={id} onClick={(e)=>deletefunction(e)}>X</button>
+            <button id={id} onClick={e=>deletefunction(e)}>X</button>
             </WrapperInf>
 
         </CardContainer>

@@ -36,32 +36,34 @@ input[type="submit"]{
 
 `
 
-export default function New({createNewTask,inputs}) {
+export default function New({ fill, newTask }) {
     const context = useContext(ctxContext)
-                const creatTask = ( e ) => {
-                    createNewTask(e)
-                }
+
+    const fillnew = (e) => {
+        fill(e)
+    }
+
     return (
         <ctxContext.Consumer>
             {
                 context =>(
                     <>
-                    <NewForm className="newTaskForm" id="newTaskForm" onSubmit={creatTask}>
+                    <NewForm className="newTaskForm" id="newTaskForm" onSubmit={newTask}>
                         <input
                         type="text"
                         name="nametask"
                         placeholder="Task Name"
                         id="taskname"
-                        onChange={inputs}
+                        onChange={fillnew}
                         />
                         <input
                         type="time"
                         name="timing"
                         id="timingtask"
                         step="3"
-                        onChange={inputs}
+                        onChange={fillnew}
                         />
-                        <select  name="typetask" onChange={inputs}>
+                        <select  name="typetask" onChange={fillnew}>
                             Categoria
                             <option value="">Category</option>
                             <option value="dog">Dog</option>
@@ -77,7 +79,7 @@ export default function New({createNewTask,inputs}) {
                         placeholder="Description"
                        
                         id="Description"
-                        onChange={inputs}
+                        onChange={fillnew}
                         />
                         <input
                         type="submit"
